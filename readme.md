@@ -2,7 +2,7 @@
 
 This is a chrome extension for edX and XueTangX. After enable it, you can download a course's subtitle easily. What you should notice is that you should ensure subtitle exists on the page.
 
-It was publish on chrome webstore. If you want install it, you can go to [Chrome WebStore](https://chrome.google.com/webstore/detail/edx-xuetangx-subtitle-dow/adgfnlgphaiikchoamabifhaakkpbcpl?hl=zh-CN).
+It has been published on chrome webstore. If you wanna install it, you can go to [Chrome WebStore](https://chrome.google.com/webstore/detail/edx-xuetangx-subtitle-dow/adgfnlgphaiikchoamabifhaakkpbcpl?hl=zh-CN).
 
 If you have any questions, you can post a [issue](https://github.com/lizheming/SubtitleDownload/issues) or post in [mooc](http://mooc.guokr.com/post/603342/)
 ## 简介
