@@ -6,7 +6,7 @@
     "manifest_version" : 2,
     "content_scripts" : [
         {
-            "matches" : ["https://courses.edx.org/courses/*", "http://www.xuetangx.com/courses/*", "http://xuetangx.com/courses/*"], 
+            "matches" : ["https://courses.edx.org/courses/*", "http://www.xuetangx.com/courses/*", "http://xuetangx.com/courses/*", "https://class.coursera.org/*"], 
             "js"      : ["jquery-2.0.3.min.js", "main.js"], 
             "run_at"  : "document_end"
         }

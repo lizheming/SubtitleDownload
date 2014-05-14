@@ -1,4 +1,17 @@
 (function($) {
+	window.location.host == "class.coursera.org" && $('a[title="Subtitles (srt)"]').each(function(i, item) {
+		var chinese = this.href.replace(/(q=.+_)en/g, "$1zh");
+		$.ajax({
+			type:"HEAD",
+			url: chinese,
+			complete: function(xhr,data) {
+				if(xhr.status != 200) return false;
+				$(item).after('<a target="_new" href="'+chinese+'" title="中文字幕下载">中</a>');
+			}
+		})
+	});
+
+	/** edX **/
 	if(!$('li[data-index]')) return false;
 	
 	function fake_click(obj) {
