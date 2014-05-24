@@ -1,15 +1,17 @@
 (function($) {
-	window.location.host == "class.coursera.org" && $('a[title="Subtitles (srt)"]').each(function(i, item) {
-		var chinese = this.href.replace(/(q=.+_)en/g, "$1zh");
-		$.ajax({
-			type:"HEAD",
-			url: chinese,
-			complete: function(xhr,data) {
-				if(xhr.status != 200) return false;
-				$(item).after('<a target="_new" href="'+chinese+'" title="中文字幕下载">中</a>');
-			}
-		})
-	});
+	window.location.host == "class.coursera.org" && $('.course-item-list-section-list li').map(function(){return $('a:last', $(this)).get(0)}).each(function(i,item){
+		var chinese = this.href.replace('download.mp4?lecture_id', 'subtitles?q');
+		chinese += '_zh&format=srt';
+		$.ajax({type:"HEAD", url:chinese, complete:function(xhr,data) {
+			if(xhr.status != 200) {
+				chinese = chinese.replace('_zh&', '_zh-cn&');
+				$.ajax({type:"HEAD", url:chinese, complete:function(xhr,data) {
+					if(xhr.status != 200) return false;
+					$(item).before('<a target="_new" href="'+chinese+'" title="中文字幕下载">中</a>');
+				}})
+			} else $(item).before('<a target="_new" href="'+chinese+'" title="中文字幕下载">中</a>');
+		}})
+	})
 
 	/** edX **/
 	if(!$('li[data-index]')) return false;
