@@ -1,4 +1,20 @@
 (function($) {
+	window.location.host.match(/futurelearn\.com/) && (function() {
+		var subtitles = $('video div[data-kind="subtitles"]');
+		if(subtitles.length == 0) return false;
+		var related = $('.related-files');
+		subtitles.each(function() {
+			related.append('<li class="media media-small media-sectioned">'+
+	          '<div class="media_centered_container">'+
+	            '<div aria-hidden="true" class="media_icon icon" data-icon="x"></div>'+
+	            '<div class="media_body">'+
+	              '<div class="header header-double">'+
+	                '<h5 class="headline headline-primary">'+
+	                  '<a class="futerlearnDown" href="'+$(this).data('src')+'">'+$(this).data('label')+' Subtitle Download</a>'+
+	                  '<span class="headline headline-secondary" style="margin-left:5px;">srt</span>'+
+	                '</h5></div></div></div></li>');
+		})
+	}());
 	window.location.host == "class.coursera.org" && $('.course-item-list-section-list li').map(function(){return $('a:last', $(this)).get(0)}).each(function(i,item){
 		var chinese = this.href.replace('download.mp4?lecture_id', 'subtitles?q');
 		chinese += '_zh&format=srt';
