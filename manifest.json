@@ -2,7 +2,7 @@
 "update_url": "https://clients2.google.com/service/update2/crx",
 
     "name" : "edX & XueTangX Subtitle Download", 
-    "version" : "0.6",
+    "version" : "0.6.1",
     "manifest_version" : 2,
     "content_scripts" : [
         {
@@ -14,7 +14,7 @@
                 "http://xuetangx.com/courses/*", 
                 "https://class.coursera.org/*"
             ], 
-            "js"      : ["jquery-2.0.3.min.js", "video.js", "main.js"], 
+            "js"      : ["jquery-2.0.3.min.js", "main.js"], 
             "run_at"  : "document_end"
         }
     ], 
