@@ -1,18 +1,29 @@
 (function($) {
 	window.location.host.match(/futurelearn\.com/) && (function() {
-		var subtitles = $('video div[data-kind="subtitles"]');
-		if(subtitles.length == 0) return false;
-		var related = $('.related-files');
-		subtitles.each(function() {
-			related.append('<li class="media media-small media-sectioned">'+
-	          '<div class="media_centered_container">'+
-	            '<div aria-hidden="true" class="media_icon icon" data-icon="x"></div>'+
-	            '<div class="media_body">'+
-	              '<div class="header header-double">'+
-	                '<h5 class="headline headline-primary">'+
-	                  '<a class="futerlearnDown" href="'+$(this).data('src')+'">'+$(this).data('label')+' Subtitle Download</a>'+
-	                  '<span class="headline headline-secondary" style="margin-left:5px;">srt</span>'+
-	                '</h5></div></div></div></li>');
+		function file_get_contents(url, callback) {
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					var h = document.createElement("html");
+					h.innerHTML = xhr.responseText;
+					callback(h);
+				}
+			}
+			xhr.open("GET", url, true);
+			xhr.send(null);
+		}
+		file_get_contents(location.href, function(d) {
+			document.querySelector(".related-files").innerHTML += [].map.call(d.querySelectorAll("video div[data-kind='subtitles']"), function(sub) {
+				return '<li class="media media-small media-sectioned">'+
+		          '<div class="media_centered_container">'+
+		            '<div aria-hidden="true" class="media_icon icon" data-icon="x"></div>'+
+		            '<div class="media_body">'+
+		              '<div class="header header-double">'+
+		                '<h5 class="headline headline-primary">'+
+		                  '<a class="futerlearnDown" href="'+sub.getAttribute('data-src')+'">'+sub.getAttribute('data-label')+' Subtitle Download</a>'+
+		                  '<span class="headline headline-secondary" style="margin-left:5px;">srt</span>'+
+		                '</h5></div></div></div></li>';
+			}).join('');
 		})
 	}());
 	window.location.host == "class.coursera.org" && $('.course-item-list-section-list li').map(function(){return $('a:last', $(this)).get(0)}).each(function(i,item){

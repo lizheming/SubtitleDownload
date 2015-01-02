@@ -14,7 +14,7 @@
                 "http://xuetangx.com/courses/*", 
                 "https://class.coursera.org/*"
             ], 
-            "js"      : ["jquery-2.0.3.min.js", "main.js"], 
+            "js"      : ["jquery-2.0.3.min.js", "video.js", "main.js"], 
             "run_at"  : "document_end"
         }
     ], 
